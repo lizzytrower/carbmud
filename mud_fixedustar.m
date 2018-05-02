@@ -58,7 +58,7 @@ for mm = 1:length(D1)
     c_b1 = c_b(mm);
     
     ustar = ustar1;
-    susp_abrasion_calculations_turb10_lizzy_mud
+    susp_abrasion_calculations_mud
     Ewi(mm) = E1_st*(g*D)^(3/2); %[m^3/s^3]
 
 end
