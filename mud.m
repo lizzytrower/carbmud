@@ -69,7 +69,7 @@ for nn = 1:length(ustar1)
         tau = ustar^2/(R*g*D);
         tstage = tau/tauc;
         
-        susp_abrasion_calculations_turb10_lizzy_mud
+        susp_abrasion_calculations_mud
         Ewi(mm) = E1_st*(g*D)^(3/2); %[m^3/s^3]
         
     end
