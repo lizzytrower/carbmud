@@ -20,6 +20,8 @@ tauc = 0.03; %Critical Shields number.  0.03 is good for sand.
 gaurds2 = 1; %this sets limit to Ub if  = 1
 Stc = 10; %Stokes threshold for viscous damping of impacts
 
+km = 0.92; %fraction of abrasion partitioned to mud (vs fragmentation)
+
 %calculate settling velocity
 CSF = .8;  %1 is for spheres, 0.8 is for natural
 PS = 3.5;  %6 is for spheres, 3.5 is for natural
@@ -66,7 +68,7 @@ end
 V_i = 1/2.*Vp.*rho_s./eps_v; %volume eroded per impact (without w_i) [m*s^2]
 
 Erate = V_i.*Ir.*Ewi'; %[m^3/m^2/s]
-Erate = real(Erate.*rho_s*1000*60*60*24*365); %convert to g/m^2/yr
+Erate = km*real(Erate.*rho_s*1000*60*60*24*365); %convert to g/m^2/yr
 
 figure
 plot(D1*10^6,log10(Erate))
