@@ -23,6 +23,8 @@ tauc = 0.03; %Critical Shields number.  0.03 is good for sand.
 gaurds2 = 1; %this sets limit to Ub if  = 1
 Stc = 10;
 
+km = 0.8; %fraction of abrasion partitioned to mud (vs fragmentation)
+
 %calculate settling velocity
 CSF = 0.8;  %1 is for spheres, 0.8 is for natural
 PS = 3.5;  %6 is for spheres, 3.5 is for natural
@@ -81,7 +83,7 @@ for nn = 1:length(ustar1)
     
 end
 
-Erate = real(Erate.*rho_s*1000*60*60*24*365); %convert to g/m^2/yr
+Erate = km*real(Erate.*rho_s*1000*60*60*24*365); %convert to g/m^2/yr
 
 P = [0.8 1.2 2.5 7.5];
 ustar_draw = zeros(length(ws1),length(P));
