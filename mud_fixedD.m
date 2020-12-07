@@ -1,6 +1,7 @@
 %%Carbonate mud abrasion rate at fixed grain size
 %Elizabeth Trower, University of Colorado Boulder, April 2018
 %This code was designed with Matlab R2017b
+%Updated December 2020 with Matlab R2018b
 
 clear
 
@@ -19,12 +20,13 @@ g = 9.81; %[m/s^2]
 nu = 1.3*10^-6; %kinematic viscosity of water [m^2/s]
 young = 144*10^9; %young's modulus [kg/m/s^2]
 strength = 1*10^6; %tensile strength [kg/m/s^2]
+km = 0.92;
 
 tauc = 0.03; %Critical Shields number.  0.03 is good for sand.
 gaurds2 = 1; %this sets limit to Ub if  = 1
 Stc = 10;
 
-km = 0.92; %fraction of abrasion partitioned to mud (vs fragmentation)
+km = 0.8; %fraction of abrasion partitioned to mud (vs fragmentation)
 
 %calculate settling velocity
 CSF = 0.8;  %1 is for spheres, 0.8 is for natural
@@ -70,7 +72,7 @@ for nn = 1:length(ustar1)
     tstage = tau/tauc;
 
     susp_abrasion_calculations_mud
-    Ewi = E1_st*(g*D)^(3/2); %[m^3/s^3]
+    Ewi = E1_st*ws^3; %[m^3/s^3]
 
     
     V_i = 1/2.*Vp.*rho_s./eps_v; %volume eroded per impact (without w_i) [m*s^2]
@@ -80,7 +82,8 @@ for nn = 1:length(ustar1)
     
 end
 
-Erate = km*real(Erate.*rho_s*1000*60*60*24*365); %convert to g/m^2/yr
+Erate = real(Erate.*rho_s*1000*60*60*24*365); %convert to g/m^2/yr
+Erate = km*Erate;
 
 figure
 plot(ustar1,log10(Erate))

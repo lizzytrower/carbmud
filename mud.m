@@ -1,6 +1,7 @@
 %%Carbonate mud abrasion rate
 %Elizabeth Trower, University of Colorado Boulder, April 2018
 %This code was designed with Matlab R2017b
+%Updated December 2020 with Matlab R2018b
 
 clear
 
@@ -72,7 +73,7 @@ for nn = 1:length(ustar1)
         tstage = tau/tauc;
         
         susp_abrasion_calculations_mud
-        Ewi(mm) = E1_st*(g*D)^(3/2); %[m^3/s^3]
+        Ewi(mm) = E1_st*ws^3; %[m^3/s^3]
         
     end
     
